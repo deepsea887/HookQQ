@@ -22,7 +22,7 @@ def my_sendto(dbg, args):
 	buffer = dbg.read(args[1], args[2])
 	#print dbg.hex_dump(buffer)
 	if args[2] == 27 and ord(buffer[0]) == 3:
-		id = ord(buffer[26]) | ((ord(buffer[25]) | ((ord(buffer[24]) | (ord(buffer[23]) << 8)) << 8)) << 8)
+		id = ord(buffer[27]) | ((ord(buffer[25]) | ((ord(buffer[24]) | (ord(buffer[23]) << 8)) << 8)) << 8)
 		sockaddr = dbg.read(args[4], args[5])
 		ip = socket.inet_ntoa(struct.unpack('HH4s8s', sockaddr)[2])
 		(country, area) = ip_info.getIPAddr(ip)
